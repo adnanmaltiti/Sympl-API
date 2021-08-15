@@ -14,37 +14,37 @@ Steps (Usecase)
 API Endpoints
 
 USERS
-localhost/{name of directory}/api/users.php
+localhost/{name of directory}/api/users
 
 1. GET (all users)
-/api/users.php
+/api/users
 
 2. GET (single user)
-/api/users.php/?id={id}
+/api/users/?id={id}
 
 3. POST (create transaction)
-/api/users.php/
+/api/users/
 Supply form data
 
 4. POST (update transaction)
-/api/users.php/
+/api/users/
 Supply form data with {id} filed
 
 TRANSACTIONS
-localhost/{name of directory}/api/transactions.php
+localhost/{name of directory}/api/transactions
 
 1. GET (all transactions)
-/api/transactions.php
+/api/transactions
 
 2. GET (single transaction)
-/api/transactions.php/?id={id}
+/api/transactions/?id={id}
 
 3. POST (create transaction)
-/api/transactions.php/
+/api/transactions/
 Supply form data
 
 4. POST (update transaction)
-/api/transactions.php/
+/api/transactions/
 Supply form data with {id} filed
 
 Enjoy
