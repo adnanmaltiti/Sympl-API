@@ -2,7 +2,7 @@
 
 require_once '../require.php';
 
-if (isset($_GET) && !isset($_GET['id']) && !isset($_GET['delete']) && !isset($_POST))
+if (isset($_GET) && !isset($_GET['id']) && !isset($_GET['delete']) && !isset($_POST['id']) && !isset($_POST['full_name']))
 {
     echo readTransactions($connect);
 }
