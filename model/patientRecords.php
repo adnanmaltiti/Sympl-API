@@ -1,15 +1,19 @@
 <?php
-# Create  Transaction
-function createTransaction ($connect, $data)
+# Create  PatientRecord
+function createPatientRecord ($connect, $data)
 {
-    $query = 'INSERT INTO transactions SET
-    goods       = :goods, 
-    quantity    = :quantity';
+    $query = 'INSERT INTO patientRecords SET
+    id       = :id, 
+    rcdCode    = :rcdCode,
+    rcdPath    = :rcdPath,
+    created_at    = :created_at';
 
     $statement = $connect->prepare($query);
 
-    $statement->bindValue(':goods', $data['goods']);
-    $statement->bindValue(':quantity', $data['quantity']);
+    $statement->bindValue(':id', $data['id']);
+    $statement->bindValue(':rcdCode', $data['rcdCode']);
+    $statement->bindValue(':rcdPath', $data['rcdPath']);
+    $statement->bindValue(':created_at', $data['created_at']);
 
     try {
         $statement->execute();
@@ -20,14 +24,14 @@ function createTransaction ($connect, $data)
     }
 
     return json_encode([
-        'message' => 'Transaction Recorded.'
+        'message' => 'PatientRecord Recorded.'
     ]);
 }
 
-# Read all Transactions
-function readTransactions ($connect)
+# Read all PatientRecords
+function readPatientRecords ($connect)
 {
-    $query = "SELECT * FROM transactions";
+    $query = "SELECT * FROM patientRecords";
 
     $statement = $connect->prepare($query);
 
@@ -45,10 +49,10 @@ function readTransactions ($connect)
 
 }
 
-# Read a single Transaction
-function singleTransaction ($connect, $id)
+# Read a single PatientRecord
+function singlePatientRecord ($connect, $id)
 {
-    $query = "SELECT * FROM transactions WHERE id = :id";
+    $query = "SELECT * FROM patientRecords WHERE id = :id";
 
     $statement = $connect->prepare($query);
 
@@ -68,18 +72,21 @@ function singleTransaction ($connect, $id)
 
 }
 
-# Edit Transaction
-function updateTransaction ($connect, $data)
+# Edit PatientRecord
+function updatePatientRecord ($connect, $data)
 {
-    $query = 'UPDATE transactions SET
-    goods       = :goods, 
-    quantity    = :quantity WHERE id = :id';
+    $query = 'UPDATE patientRecords SET
+    id       = :id, 
+    rcdCode    = :rcdCode,
+    rcdPath    = :rcdPath,
+    created_at    = :created_at';
 
     $statement = $connect->prepare($query);
 
     $statement->bindValue(':id', $data['id']);
-    $statement->bindValue(':goods', $data['goods']);
-    $statement->bindValue(':quantity', $data['quantity']);
+    $statement->bindValue(':rcdCode', $data['rcdCode']);
+    $statement->bindValue(':rcdPath', $data['rcdPath']);
+    $statement->bindValue(':created_at', $data['created_at']);
 
     try {
         $statement->execute();
@@ -93,10 +100,10 @@ function updateTransaction ($connect, $data)
     ]);
 }
 
-# Delete Transaction
-function deleteTransaction ($connect, $id)
+# Delete PatientRecord
+function deletePatientRecord ($connect, $id)
 {
-    $query = "DELETE FROM transactions WHERE id = :id LIMIT 1";
+    $query = "DELETE FROM patientRecords WHERE id = :id LIMIT 1";
 
     $statement = $connect->prepare($query);
 

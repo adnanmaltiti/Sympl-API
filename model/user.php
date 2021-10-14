@@ -1,8 +1,44 @@
 <?php
+# Login User
+function loginUser($connect, $data)
+{
+    $query = "SELECT * FROM users WHERE email = :email";
+
+    $statement = $connect->prepare($query);
+    $statement->bindValue(':email', $data['email']);
+
+    try {
+
+        $statement->execute();
+        $row = $statement->fetch(PDO::FETCH_OBJ);
+
+        if ($row){
+            $hashedPassword = $row->password;
+        } else {
+            $hashedPassword = '';
+        }
+
+        if (password_verify($data['password'], $hashedPassword)) {
+            $resp = True;
+        } else {
+            $resp = False;
+        }
+
+    } catch (PDOException $e) {
+        print "Error Message: " . $e->getMessage();
+        exit();
+    }
+
+    return json_encode([
+        'message' => $resp,
+        'data' => $row
+    ]);
+}
+
 # Create  User
 function createUser ($connect, $data)
 {
-    $query = 'INSERT INTO userss SET
+    $query = 'INSERT INTO users SET
     full_name   = :full_name, 
     email       = :email, 
     password    = :password';
@@ -29,7 +65,7 @@ function createUser ($connect, $data)
 # Read all Users
 function readUsers ($connect)
 {
-    $query = "SELECT * FROM userss";
+    $query = "SELECT * FROM users";
 
     $statement = $connect->prepare($query);
 
@@ -50,7 +86,7 @@ function readUsers ($connect)
 # Read a single User
 function singleUser ($connect, $id)
 {
-    $query = "SELECT * FROM userss WHERE id = :id";
+    $query = "SELECT * FROM users WHERE id = :id";
 
     $statement = $connect->prepare($query);
 
@@ -73,7 +109,7 @@ function singleUser ($connect, $id)
 # Edit User
 function updateUser ($connect, $data)
 {
-    $query = "UPDATE userss SET 
+    $query = "UPDATE users SET 
     full_name   = :full_name, 
     email       = :email, 
     password    = :password WHERE id = :id";
@@ -100,7 +136,7 @@ function updateUser ($connect, $data)
 # Delete User
 function deleteUser ($connect, $id)
 {
-    $query = "DELETE FROM userss WHERE id = :id LIMIT 1";
+    $query = "DELETE FROM users WHERE id = :id LIMIT 1";
 
     $statement = $connect->prepare($query);
 

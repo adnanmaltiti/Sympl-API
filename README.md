@@ -1,17 +1,14 @@
-# Sympl-API
-A basic API created in PHP using PDO with a combination of procedural and functional programming.
-
-Steps (Usecase)
-
-1. Clone the repo
-
-2. Extract to web server root.
-
-3. Dump SQL file (monitor.sql)
-
-4. Test api with Postman or similar platform.
-
+# MotherAid API Backend
 API Endpoints
+
+/api/users
+/api/appointments
+/api/doctors
+/api/hospitals
+/api/patientRecords
+/api/pharmacies
+
+Example
 
 USERS
 localhost/{name of directory}/api/users
@@ -22,29 +19,11 @@ localhost/{name of directory}/api/users
 2. GET (single user)
 /api/users/?id={id}
 
-3. POST (create transaction)
+3. POST (create user)
 /api/users/
 Supply form data
 
-4. POST (update transaction)
+4. POST (update user)
 /api/users/
 Supply form data with {id} filed
 
-TRANSACTIONS
-localhost/{name of directory}/api/transactions
-
-1. GET (all transactions)
-/api/transactions
-
-2. GET (single transaction)
-/api/transactions/?id={id}
-
-3. POST (create transaction)
-/api/transactions/
-Supply form data
-
-4. POST (update transaction)
-/api/transactions/
-Supply form data with {id} filed
-
-Enjoy
