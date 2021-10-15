@@ -1,13 +1,16 @@
 <?php
 // Database Credentials
-define('DATABASE_HOST', 'localhost');
-define('DATABASE_USERNAME', 'root');
-define('DATABASE_PASSWORD', '');
-define('DATABASE_NAME', 'motheraid');
+define('DATABASE_HOST', 'assocdb.mysql.database.azure.com');
+define('DATABASE_USERNAME', 'assocdb@assocdb');
+define('DATABASE_PASSWORD', 'fC4SjQm4W7hsXGv');
+define('DATABASE_NAME', 'ukhtiaiddb');
 define('DATABASE_PORT', '3306');
 
 // APP ROOT
 define('APP', dirname(dirname(__FILE__)));
 
 // URL ROOT
-define('URL', 'localhost/motheraid/');
+define('URL', 'https://ukhtiaid.azurewebsites.net/');
+
+// Connection command on az
+// mysql -h assocdb.mysql.database.azure.com -u assocdb@assocdb -p
