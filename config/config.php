@@ -10,7 +10,7 @@ define('DATABASE_PORT', '3306');
 define('APP', dirname(dirname(__FILE__)));
 
 // URL ROOT
-define('URL', 'https://ukhtiaid.azurewebsites.net/');
+define('URL', 'https://motheraid.azurewebsites.net/');
 
 // Connection command on az
 // mysql -h assocdb.mysql.database.azure.com -u assocdb@assocdb -p
